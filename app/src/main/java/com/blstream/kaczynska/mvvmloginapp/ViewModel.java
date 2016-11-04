@@ -1,10 +1,12 @@
 package com.blstream.kaczynska.mvvmloginapp;
 
 import android.content.Context;
+import android.databinding.Observable;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
 import android.view.View;
 
 import rx.functions.Action1;
@@ -32,6 +34,23 @@ public class ViewModel {
 		this.context = context;
 		this.focusOnNextView = focusOnNextView;
 		this.showLoginAction = showLoginAction;
+		setOnPropertyChangedCallbacks();
+	}
+
+	private void setOnPropertyChangedCallbacks() {
+		email.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
+			@Override
+			public void onPropertyChanged(Observable observable, int i) {
+				validateEmail(email, emailError);
+			}
+		});
+
+		password.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
+			@Override
+			public void onPropertyChanged(Observable observable, int i) {
+				validatePassword(password, passError);
+			}
+		});
 	}
 
 	public boolean onEditorAction(View view) {
@@ -48,6 +67,7 @@ public class ViewModel {
 		return true;
 	}
 
+	@VisibleForTesting
 	void handleValidPasswordInput(View view, boolean isAllowed) {
 		if (isAllowed) {
 			isLoginEnabled.set(true);

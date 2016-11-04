@@ -28,7 +28,7 @@ public class ViewModelTest {
 
 	@Mock
 	Context context;
-	@Mock
+
 	ViewModel viewModel;
 	@Mock
 	View view;
