@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.blstream.kaczynska.mvvmloginapp.ViewModel" />
@@ -85,7 +84,7 @@
                     android:enabled="@{viewModel.isLoginEnabled}"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
-                    android:onClick="@{(view) -> viewModel.onClick(view)}"
+                    android:onClick="@{(view) -> viewModel.onLoginClick(view)}"
                     android:text="@string/action_sign_in"
                     android:textStyle="bold" />
             </LinearLayout>

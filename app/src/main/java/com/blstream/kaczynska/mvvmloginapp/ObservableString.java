@@ -5,18 +5,18 @@ import android.databinding.BaseObservable;
 
 public class ObservableString extends BaseObservable {
 
-    private String value;
+	private String value;
 
-    String get() {
-        return value;
-    }
+	String get() {
+		return value;
+	}
 
-    void set(String value) {
-        this.value = value;
-        notifyChange();
-    }
+	void set(String value) {
+		this.value = value;
+		notifyChange();
+	}
 
-    boolean isNullOrEmpty() {
-        return value == null || value.isEmpty();
-    }
+	boolean isNullOrEmpty() {
+		return value == null || value.isEmpty();
+	}
 }
